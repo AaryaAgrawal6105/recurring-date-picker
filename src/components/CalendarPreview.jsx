@@ -1,20 +1,13 @@
-
+// src/components/CalendarPreview.jsx
 import React from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import useRecurringStore from "../store/useRecurringStore";
-import { getRecurringDates, getNthWeekdayOfMonth } from "../utils/recurrerence";
-import {
-    isSameDay,
-    addDays,
-    parseISO,
-    format,
-    isBefore,
-    addMonths,
-    addYears,
+import { getRecurringDates } from "../utils/recurrerence"; // Assuming this is your logic file
+import { isSameDay } from "date-fns";
 
-} from "date-fns";
-
+// Import default and custom calendar styles
+import "react-calendar/dist/Calendar.css";
+import "./Calendar.css"; // Your custom styles
 
 export default function CalendarPreview() {
     const {
@@ -26,8 +19,13 @@ export default function CalendarPreview() {
         nthWeekday,
     } = useRecurringStore();
 
-    if (!startDate)
-        return <div className="text-gray-500">Select a start date to preview the calendar.</div>;
+    if (!startDate) {
+        return (
+            <div className="h-full flex items-center justify-center bg-gray-50 rounded-lg p-4">
+                <p className="text-gray-500">Select a start date to preview the schedule.</p>
+            </div>
+        );
+    }
 
     const recurringDates = getRecurringDates({
         startDate,
@@ -39,16 +37,20 @@ export default function CalendarPreview() {
     });
 
     const tileClassName = ({ date }) =>
-        recurringDates.some((recurringDate) => isSameDay(recurringDate, date)) ? "highlight" : null;
+        recurringDates.some((recurringDate) => isSameDay(recurringDate, date))
+            ? "highlight" // This class is styled in Calendar.css
+            : null;
 
     return (
-        <div className="mt-4">
-            <h4 className="font-semibold text-gray-800 mb-2">Mini Calendar Preview:</h4>
+        <div className="p-4 bg-gray-50 rounded-lg shadow-inner">
+            <h4 className="text-lg font-semibold text-gray-800 mb-3 text-center">
+                Schedule Preview
+            </h4>
             <Calendar
                 tileClassName={tileClassName}
                 showNeighboringMonth={false}
+                // The calendar will now be styled by Calendar.css
             />
         </div>
     );
 }
-

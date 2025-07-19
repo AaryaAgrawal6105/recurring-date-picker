@@ -9,7 +9,10 @@ export default function RecurringPicker() {
             <h2 className="text-xl font-semibold mb-4">Recurring Date Picker</h2>
             <FrequencySelector />
             <CustomRuleForm />
-            <CalendarPreview />
+            <div data-testid="calendar">
+                <CalendarPreview />
+            </div>
         </div>
     );
 }
+    

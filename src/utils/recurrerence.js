@@ -21,7 +21,7 @@ import {
     // Start from the 1st day of the month
     for (let day = 1; day <= 31; day++) {
       const current = new Date(year, month, day);
-      if (current.getMonth() !== month) break; // Stop if we roll into the next month
+      if (current.getMonth() !== month) break; 
   
       if (current.getDay() === targetWeekday) {
         dates.push(current);
@@ -48,11 +48,11 @@ import {
     daysOfWeek,
     nthWeekday,
   }) {
-    let result = []; // Changed to let to allow reassignment
+    let result = []; 
   
     if (!startDate || !frequency || !interval) return result;
   
-    // Use startOfDay to avoid timezone issues
+   
     const start = startOfDay(parseISO(startDate));
     const max = endDate
       ? startOfDay(parseISO(endDate))
@@ -69,7 +69,7 @@ import {
         current = startOfDay(addDays(current, interval));
       }
     } else if (frequency === "weekly") {
-      // Convert day names to numbers (0 = Sunday, 1 = Monday, etc.)
+      
       const dayNumbers = daysOfWeek.map(day => 
         ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].indexOf(day)
       );
@@ -94,13 +94,13 @@ import {
         current = addDays(current, interval * 7);
       }
       
-      // Convert back to Date objects and sort
+   
       result = Array.from(resultSet)
         .map(iso => new Date(iso))
         .sort((a, b) => a - b);
     } else if (frequency === "monthly") {
       if (nthWeekday?.day && nthWeekday?.week) {
-        // Start from the month after the start date's month
+       
         let currentMonth = new Date(start.getFullYear(), start.getMonth() + 1, 1);
         
         while (isBefore(currentMonth, max) || isSameDay(currentMonth, max)) {

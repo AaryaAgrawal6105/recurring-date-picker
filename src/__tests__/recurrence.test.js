@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { getRecurringDates, getNthWeekdayOfMonth } from '../utils/recurrerence.js';
-// Update all test expectations to use format(date, 'yyyy-MM-dd')
+
 
 it('returns every 2 days between start and end date', () => {
   const result = getRecurringDates({
@@ -68,11 +68,11 @@ it('returns weekly dates on Mon & Wed every week', () => {
   });
 
   expect(result.map(d => format(d, 'yyyy-MM-dd'))).toEqual([
-    '2025-07-02', // Wednesday
-    '2025-07-07', // Monday
-    '2025-07-09', // Wednesday
-    '2025-07-14', // Monday
-    '2025-07-16', // Wednesday
-    '2025-07-21', // Monday
+    '2025-07-02', 
+    '2025-07-07',
+    '2025-07-09', 
+    '2025-07-14', 
+    '2025-07-16', 
+    '2025-07-21', 
   ]);
 });

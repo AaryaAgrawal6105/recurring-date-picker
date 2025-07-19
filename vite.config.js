@@ -10,5 +10,11 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './src/setupTests.js'
-  }
+  },
+  server: {
+    host: true,
+    strictPort: true,
+    port: 5173,
+    allowedHosts: ['5173-aaryaagrawa-recurringda-xvzg20yi5u1.ws-us120.gitpod.io'], 
+  },
 });

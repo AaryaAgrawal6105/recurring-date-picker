@@ -1,4 +1,4 @@
-// src/components/RecurringPicker.jsx
+
 import React from "react";
 import FrequencySelector from "./FrequencySelector";
 import CustomRuleForm from "./CustomRuleForm";

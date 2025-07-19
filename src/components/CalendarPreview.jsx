@@ -1,13 +1,13 @@
-// src/components/CalendarPreview.jsx
+
 import React from "react";
 import Calendar from "react-calendar";
 import useRecurringStore from "../store/useRecurringStore";
-import { getRecurringDates } from "../utils/recurrerence"; // Assuming this is your logic file
+import { getRecurringDates } from "../utils/recurrerence"; 
 import { isSameDay } from "date-fns";
 
-// Import default and custom calendar styles
+
 import "react-calendar/dist/Calendar.css";
-import "./Calendar.css"; // Your custom styles
+import "./Calendar.css"; 
 
 export default function CalendarPreview() {
     const {
@@ -38,7 +38,7 @@ export default function CalendarPreview() {
 
     const tileClassName = ({ date }) =>
         recurringDates.some((recurringDate) => isSameDay(recurringDate, date))
-            ? "highlight" // This class is styled in Calendar.css
+            ? "highlight" 
             : null;
 
     return (
@@ -49,7 +49,7 @@ export default function CalendarPreview() {
             <Calendar
                 tileClassName={tileClassName}
                 showNeighboringMonth={false}
-                // The calendar will now be styled by Calendar.css
+               
             />
         </div>
     );

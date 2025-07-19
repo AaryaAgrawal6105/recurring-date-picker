@@ -1,4 +1,4 @@
-// src/components/FrequencySelector.jsx
+
 import React from "react";
 import useRecurringStore from "../store/useRecurringStore";
 
